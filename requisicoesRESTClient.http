@@ -1,0 +1,16 @@
+
+
+# GET http://t213.vg/rest/default/V1/store/storeViews HTTP/1.1
+
+#POST http://t213.vg/rest/default/V1/integration/customer/token HTTP/1.1
+
+# {
+#   "password": "",
+#   "username": ""
+# }
+
+# GET http://xkcd.com/info.0.json HTTP/1.1
+
+# GET http://xkcd.com/{12}/info.0.json HTTP/1.1
+
+# GET https://api.spotify.com/v1/albums/{1} HTTP/1.1

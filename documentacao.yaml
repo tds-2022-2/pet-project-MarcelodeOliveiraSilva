@@ -1,0 +1,142 @@
+swagger: "2.0"
+info:
+  title: API de jogos
+  description: API simples para armazenar informações de jogos.
+  version: 1.0.0
+host: localhost:8080
+basePath: /api/jogos
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      summary: Retorna uma lista com todos os jogos.
+      description: Retorna todos objetos Jogo inseridos na database.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Lista com objetos Jogo.
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: UUID do usuário.
+              title:
+                type: string
+                description: Título do jogo.
+              description:
+                type: string
+                description: Descrição do jogo.
+              release:
+                type: string
+                description: Data de lançamento do jogo.
+  /{id}:
+    get:
+      summary: Retorna um jogo.
+      description: Retorna o objeto jogo por UUID.
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: UUID do jogo cadastrado.
+          required: true
+      responses:
+        200:
+          description: OK
+        404:
+          description: Jogo não encontrado
+    delete:
+      summary: Deleta um jogo.
+      description: Deleta o objeto jogo por UUID.
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: UUID do jogo cadastrado.
+          required: true
+      responses:
+        200:
+          description: Objeto Jogo   
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: UUID do usuário.
+              title:
+                type: string
+                description: Título do jogo.
+              description:
+                type: string
+                description: Descrição do jogo.
+              release:
+                type: string
+                description: Data de lançamento do jogo.
+        204:
+          description: Jogo não existe
+    post:
+      summary: Cria um jogo.
+      description: Insere um jogo enviando um objeto jogo.
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: UUID do jogo cadastrado.
+          required: true
+        - in: query
+          name: title
+          type: string
+          required: false
+        - in: query
+          name: description
+          type: string
+          required: false
+        - in: query
+          name: release
+          type: string
+          required: false
+      responses:
+        201:
+          description: OK   
+    put:
+      summary: Atualiza um jogo.
+      description: Atualiza um jogo por UUID, enviando um objeto jogo.
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: UUID do jogo cadastrado.
+          required: true
+        - in: query
+          name: title
+          type: string
+          required: false
+        - in: query
+          name: description
+          type: string
+          required: false
+        - in: query
+          name: release
+          type: string
+          required: false
+      responses:
+        200:
+          description: OK   
+        204:
+          description: jogo não existe
+          
+    
